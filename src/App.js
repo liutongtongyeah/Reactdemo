@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Header from './components/Header'
+import Posts from './components/Posts'
+import Home from './components/Home'
+import {useState, useEffect} from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import axios from 'axios'
 function App() {
+  const [posts, setPosts] = useState([])
+  useEffect(() => {
+    const getPosts = async () => {
+      const tasksFromServer = await fetchPosts()
+      setPosts(tasksFromServer)
+    }
+    getPosts()
+  }, [])
+  const fetchPosts = async() => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/posts/?_limit=50')
+    const data = await res.json()
+    return data
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path='/' exact element = {
+            <>
+              <Home />
+            </>
+          }/>
+          <Route path='/blog' element={
+            <>
+              <div className='mycontainer'>
+                <h4>Blog posts</h4>
+                <div className='posts'>
+                  {posts.length>0 ? <Posts posts={posts} />: <p>No posts to show</p>}
+                </div>
+              </div>
+            </>
+          }/>
+        </Routes>
+      </Router>
+    </>
   );
 }
 

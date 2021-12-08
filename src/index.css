@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,50 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+.mycontainer{
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:30px;
+  color:gray;
+}
+.posts{
+  margin-top: 15px;
+  height:600px;
+  overflow-y: auto;
+}
+.post{
+  padding:20px 2px 2px 2px;
+  border-bottom: 1px solid gray;
+}
+p{
+  font-size: 14px;
+  padding-top: 2px;
+}
+h1{
+  padding-top:10px;
+  font-size: 30px;
+}
+.mybody{
+
+  text-align: center;
+
+  max-width: 500px;
+  margin: 40px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 40px;
+  border-radius: 5px;
+}
+.mylink{
+  display: block;
+  margin: 40px auto;
+  color:black;
+  font-size: 18px;
+  text-decoration: none;
+}
+.mylink:hover{
+  color: black;
+  text-decoration: underline;
 }
